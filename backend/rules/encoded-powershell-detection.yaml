@@ -23,11 +23,6 @@ rule:
   - type: block_process
     target: process_pid
   metadata:
-    author: Security Team
-    created: '2025-01-15'
-    references:
-    - https://attack.mitre.org/techniques/T1059/001/
-    tags:
-    - powershell
-    - malware
-    - obfuscation
+    author: user
+    references: []
+    tags: []

@@ -1,6 +1,6 @@
 {
   "monitoring": {
-    "process_interval": 6,
+    "process_interval": 7,
     "filesystem_interval": 10,
     "network_interval": 5,
     "watched_paths": [
