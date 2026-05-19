@@ -105,6 +105,12 @@ export default function Rules() {
       queryClient.invalidateQueries({ queryKey: ['rules'] })
       setIsDeleteDialogOpen(false)
       setSelectedRule(null)
+      showNotification('success', 'Rule deleted successfully.')
+    },
+    onError: (error: any) => {
+      const detail = error?.response?.data?.detail
+      setIsDeleteDialogOpen(false)
+      showNotification('error', `Failed to delete rule: ${detail || 'An unexpected error occurred.'}`)
     },
   })
 
