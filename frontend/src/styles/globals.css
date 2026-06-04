@@ -64,3 +64,10 @@
   filter: invert(1);
   opacity: 1;
 }
+
+/* Keep datetime-local calendar icon visible and clickable in dark mode */
+.dark input[type='datetime-local']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.8;
+  cursor: pointer;
+}
