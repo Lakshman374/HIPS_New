@@ -203,7 +203,7 @@ class FilesystemMonitor(BaseMonitor):
 
         if self.observer:
             self.observer.stop()
-            self.observer.join()
+            self.observer.join(timeout=5)
 
     async def update_watched_paths(self, new_paths: List[str]):
         """Swap watched paths at runtime by restarting the watchdog observer.
@@ -217,7 +217,7 @@ class FilesystemMonitor(BaseMonitor):
         # Stop the current observer
         if self.observer:
             self.observer.stop()
-            self.observer.join()
+            self.observer.join(timeout=5)
 
         # Create and start a fresh observer with the new paths
         self.observer = Observer()

@@ -183,11 +183,14 @@ class CHIPSService:
                 conn = sqlite3.connect(db_path)
                 cur = conn.cursor()
                 deleted = 0
+                from hips_service.utils.time import get_local_time
+                from datetime import timedelta
+                cutoff = (get_local_time() - timedelta(days=retention_days)).strftime("%Y-%m-%d %H:%M:%S")
                 for table in ["alerts", "activity_logs", "blocked_actions"]:
                     try:
                         result = cur.execute(
-                            f"DELETE FROM {table} WHERE timestamp < datetime('now', ? || ' days')",  # noqa: S608
-                            (f"-{retention_days}",)
+                            f"DELETE FROM {table} WHERE timestamp < ?",  # noqa: S608
+                            (cutoff,)
                         )
                         deleted += result.rowcount
                     except sqlite3.Error as e:

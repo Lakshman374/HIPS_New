@@ -4,14 +4,13 @@
     "filesystem_interval": 5,
     "network_interval": 5,
     "watched_paths": [
-      "C:\\Users"
+      "C:\\Users",
+      "C:\\Windows\\System32"
     ],
     "excluded_processes": [
-      "svchost.exe",
-      "lsass.exe",
-      "csrss.exe",
-      "wininit.exe",
-      "services.exe"
+      "System",
+      "Registry",
+      "smss.exe"
     ]
   },
   "alerts": {

@@ -16,13 +16,13 @@ router = APIRouter()
 SETTINGS_FILE = os.path.join(os.path.dirname(__file__), "../../../../hips_settings.json")
 
 _DEFAULT_WATCHED_PATHS = (
-    ["C:\\Users"]
+    ["C:\\Users", "C:\\Windows\\System32"]
     if sys.platform == "win32" else
     ["/etc", "/tmp", "/var/tmp", "/home", "/root", "/var/www", "/opt", "/usr/local/bin"]
 )
 
 _DEFAULT_EXCLUDED_PROCESSES = (
-    ["svchost.exe", "lsass.exe", "csrss.exe", "wininit.exe", "services.exe"]
+    ["System", "Registry", "smss.exe"]
     if sys.platform == "win32" else
     ["systemd", "kthreadd", "ksoftirqd", "kworker"]
 )

@@ -108,10 +108,9 @@ class EventBus:
 
     async def _dispatch_event(self, event: MonitorEvent) -> int:
         """Dispatch event to subscribers. Returns number of failed callbacks."""
-        # Get specific subscribers
-        subscribers = self._subscribers.get(event.event_type, [])
-
-        # Add wildcard subscribers
+        # Build a snapshot — do NOT extend the stored list in-place or wildcard
+        # callbacks accumulate permanently in every specific event-type list.
+        subscribers = list(self._subscribers.get(event.event_type, []))
         subscribers.extend(self._subscribers.get('*', []))
 
         failures = 0
