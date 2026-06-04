@@ -25,7 +25,7 @@ A comprehensive, cross-platform security monitoring and intrusion prevention sys
 
 ## Overview
 
-HIPS (Host Intrusion Prevention System) is a real-time security monitoring solution that:
+CHIPS (Intrusion Prevention System) is a real-time security monitoring solution that:
 
 - **Monitors** system activities across process execution, filesystem operations, network connections, and Windows registry changes
 - **Detects** threats using YAML-based detection rules
@@ -38,11 +38,11 @@ HIPS (Host Intrusion Prevention System) is a real-time security monitoring solut
 
 ## Architecture
 
-HIPS follows a **client-server architecture** with a Python FastAPI backend and React frontend:
+CHIPS follows a **client-server architecture** with a Python FastAPI backend and React frontend:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     HIPS System Architecture                 │
+│                     CHIPS System Architecture                 │
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌──────────────────────────────────────────────────────┐  │
