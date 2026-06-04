@@ -169,6 +169,14 @@ class ProcessMonitor(BaseMonitor):
             # Determine severity based on process characteristics
             severity = self._determine_severity(process_name, process_exe, cmdline_str)
 
+            parent_pid = info.get('ppid')
+            parent_name = None
+            if parent_pid:
+                try:
+                    parent_name = psutil.Process(parent_pid).name()
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    pass
+
             event = MonitorEvent(
                 timestamp=get_local_time(),
                 event_type="process_create",
@@ -179,7 +187,8 @@ class ProcessMonitor(BaseMonitor):
                     'process_pid': proc.pid,
                     'process_path': process_exe,
                     'process_cmdline': cmdline_str,
-                    'parent_pid': info.get('ppid'),
+                    'parent_pid': parent_pid,
+                    'parent_name': parent_name,
                     'user': info.get('username', 'unknown'),
                     'create_time': info.get('create_time')
                 }

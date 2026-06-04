@@ -1,26 +1,24 @@
 {
   "monitoring": {
-    "process_interval": 7,
-    "filesystem_interval": 10,
+    "process_interval": 3,
+    "filesystem_interval": 5,
     "network_interval": 5,
     "watched_paths": [
-      "C:\\Users",
-      "C:\\Windows\\System32",
-      "C:\\Windows\\SysWOW64",
-      "C:\\Program Files",
-      "C:\\Program Files (x86)"
+      "C:\\Users"
     ],
     "excluded_processes": [
-      "System",
-      "Registry",
-      "smss.exe"
+      "svchost.exe",
+      "lsass.exe",
+      "csrss.exe",
+      "wininit.exe",
+      "services.exe"
     ]
   },
   "alerts": {
     "max_per_hour": 100,
     "retention_days": 30,
-    "email_notifications": true,
-    "webhook_url": "https://webhook.site/d47232ab-5a69-484a-92b2-75bac8f71d18"
+    "email_notifications": false,
+    "webhook_url": null
   },
   "database": {
     "retention_days": 90,

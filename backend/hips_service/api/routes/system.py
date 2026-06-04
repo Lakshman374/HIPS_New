@@ -12,6 +12,7 @@ from pydantic import BaseModel
 
 from hips_service.core.config import get_config
 from hips_service.core.platform_detector import PlatformDetector
+from hips_service.utils.time import get_local_time
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -173,7 +174,7 @@ async def cleanup_database():
     from hips_service.database.models import Alert, ActivityLog, BlockedAction, get_db
 
     retention_days = max(1, int(load_settings().get("database", {}).get("retention_days", 90)))
-    cutoff = datetime.utcnow() - timedelta(days=retention_days)
+    cutoff = get_local_time() - timedelta(days=retention_days)
     deleted = 0
 
     try:

@@ -75,6 +75,8 @@ class ActivityLogger:
                 log_entry.process_cmdline = data.get('process_cmdline')
             if 'parent_pid' in data:
                 log_entry.parent_pid = data.get('parent_pid')
+            if 'parent_name' in data:
+                log_entry.parent_name = data.get('parent_name')
             if 'user' in data:
                 log_entry.user = data.get('user')
 

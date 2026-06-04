@@ -93,8 +93,12 @@ async def delete_rule(rule_id: str):
         raise HTTPException(status_code=404, detail="Rule not found")
     file_path = os.path.join(_rule_engine.rules_directory, f"{rule_id}.yaml")
     if os.path.exists(file_path):
-        os.remove(file_path)
-        logger.info(f"Deleted rule file: {file_path}")
+        try:
+            os.remove(file_path)
+            logger.info(f"Deleted rule file: {file_path}")
+        except OSError as e:
+            logger.error(f"Failed to delete rule file {file_path}: {e}")
+            raise HTTPException(status_code=500, detail=f"Rule removed from engine but file deletion failed: {e}")
     return {"message": "Rule deleted", "rule_id": rule_id}
 
 

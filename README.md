@@ -1,4 +1,4 @@
-# HIPS - Host Intrusion Prevention System
+# CHIPS - Host Intrusion Prevention System
 
 A comprehensive, cross-platform security monitoring and intrusion prevention system designed for FSKTM Data Centre with real-time threat detection, rule-based event matching, and a modern web-based dashboard.
 

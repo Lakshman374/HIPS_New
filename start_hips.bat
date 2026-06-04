@@ -6,7 +6,7 @@ echo   HIPS - Starting Backend Service
 echo ============================================
 echo.
 
-cd /d "%~dp0backend"
+cd /d "%~dp0"
 
 REM Check if Python is installed
 python --version >nul 2>&1
@@ -16,6 +16,21 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
+
+REM Auto-update if this is a git repo and git is installed
+git --version >nul 2>&1
+if not errorlevel 1 (
+    git rev-parse --is-inside-work-tree >nul 2>&1
+    if not errorlevel 1 (
+        echo Checking for updates...
+        git pull origin main >nul 2>&1
+        echo Update check complete.
+    )
+)
+
+echo.
+
+cd /d "%~dp0backend"
 
 REM Install dependencies if needed
 echo Checking dependencies...

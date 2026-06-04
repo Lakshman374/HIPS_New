@@ -140,7 +140,11 @@ class RuleMatcher:
             return str(expected) not in str(field_value)
 
         elif operator == "regex":
-            pattern = self._get_regex_pattern(str(expected))
+            try:
+                pattern = self._get_regex_pattern(str(expected))
+            except re.error as e:
+                logger.error(f"Invalid regex in rule condition '{expected}': {e} — condition skipped")
+                return False
             return bool(pattern.search(str(field_value)))
 
         elif operator == "greater_than":
@@ -188,11 +192,7 @@ class RuleMatcher:
     @lru_cache(maxsize=256)
     def _get_regex_pattern(pattern: str) -> re.Pattern:
         """Get compiled regex pattern, bounded cache of 256 entries (LRU eviction)."""
-        try:
-            return re.compile(pattern, re.IGNORECASE)
-        except re.error as e:
-            logger.error(f"Invalid regex pattern '{pattern}': {e}")
-            return re.compile(r'(?!.*)')
+        return re.compile(pattern, re.IGNORECASE)
 
     def _check_frequency_condition(self, event: MonitorEvent, rule: Rule) -> bool:
         """Check frequency-based condition.

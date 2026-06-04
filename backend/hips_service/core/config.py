@@ -1,10 +1,13 @@
 """Configuration management for HIPS."""
 
+import logging
 import os
 from pathlib import Path
 from typing import List, Dict, Any
 import yaml
 from pydantic import BaseModel, Field
+
+logger = logging.getLogger(__name__)
 
 
 class MonitoringConfig(BaseModel):
@@ -79,6 +82,7 @@ class Config(BaseModel):
         """
         path = Path(config_path)
         if not path.exists():
+            logger.warning(f"Config file not found at '{config_path}', using defaults")
             return cls()
 
         with open(path, 'r', encoding='utf-8') as f:

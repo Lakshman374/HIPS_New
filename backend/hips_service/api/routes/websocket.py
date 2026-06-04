@@ -73,9 +73,9 @@ async def broadcast_event(event: MonitorEvent):
         "data": event_data
     })
 
-    # Send to all connected clients
+    # Iterate over a snapshot so connects/disconnects during await don't corrupt the loop
     disconnected = []
-    for connection in active_connections:
+    for connection in list(active_connections):
         try:
             await connection.send_text(message)
         except Exception as e:

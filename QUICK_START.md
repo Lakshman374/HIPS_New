@@ -1,6 +1,6 @@
-# HIPS Quick Start Guide
+# CHIPS Quick Start Guide
 
-Get HIPS up and running in 5 minutes!
+Get CHIPS up and running in 5 minutes!
 
 ## Step 1: Start the Backend
 
@@ -34,7 +34,7 @@ Wait for:
 
 Open browser to: **http://localhost:5173**
 
-You should see the HIPS dashboard! 🎉
+You should see the CHIPS dashboard! 🎉
 
 ## Step 4: Test It Works
 

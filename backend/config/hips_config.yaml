@@ -57,7 +57,7 @@ network_monitoring:
   - 14444
 process_monitoring:
   enabled: true
-  interval_seconds: 7
+  interval_seconds: 6
   max_events_per_batch: 100
   monitor_privilege_escalation: true
   track_children: true
