@@ -1,6 +1,6 @@
-# HIPS User Guide - Complete Tutorial
+﻿# CHIPS User Guide - Complete Tutorial
 
-This comprehensive guide will teach you how to use, configure, and create custom detection rules for the HIPS (Host-based Intrusion Prevention System).
+This comprehensive guide will teach you how to use, configure, and create custom detection rules for the CHIPS (Host-based Intrusion Prevention System).
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ This comprehensive guide will teach you how to use, configure, and create custom
 
 ## Getting Started
 
-### Starting HIPS
+### Starting CHIPS
 
 #### 1. Start the Backend
 
@@ -28,7 +28,7 @@ python -m hips_service.main
 **Expected Output:**
 ```
 ============================================================
-HIPS - Host-based Intrusion Prevention System
+CHIPS - Host-based Intrusion Prevention System
 ============================================================
 Platform: linux
 Initializing database...
@@ -53,7 +53,7 @@ npm run dev
 **Expected Output:**
 ```
 VITE v5.0.11  ready in 500ms
-➜  Local:   http://localhost:5173/
+âžœ  Local:   http://localhost:5173/
 ```
 
 #### 3. Access the Dashboard
@@ -66,7 +66,7 @@ Open your browser to: **http://localhost:5173**
 
 ### What is a Rule?
 
-A rule tells HIPS what to look for and what to do when it finds it. Rules are written in YAML format and consist of:
+A rule tells CHIPS what to look for and what to do when it finds it. Rules are written in YAML format and consist of:
 
 1. **Metadata**: Information about the rule (ID, name, severity)
 2. **Conditions**: What events to match
@@ -210,7 +210,7 @@ rule:
     - type: "log"
 
   metadata:
-    author: "HIPS User"
+    author: "CHIPS User"
     created: "2025-01-15"
     tags: ["python", "monitoring"]
 ```
@@ -235,14 +235,14 @@ curl -X POST http://localhost:8000/api/rules/reload
 Run a Python script:
 
 ```bash
-python3 -c "print('Hello HIPS')"
+python3 -c "print('Hello CHIPS')"
 ```
 
 ### Step 5: Check the Alert
 
 1. Open http://localhost:5173
 2. Navigate to **Alerts** page
-3. You should see an alert: "Python script executed: python3 -c print('Hello HIPS')"
+3. You should see an alert: "Python script executed: python3 -c print('Hello CHIPS')"
 
 ---
 
@@ -484,7 +484,7 @@ rule:
 ### Test Methodology
 
 1. **Create the rule** in `backend/rules/`
-2. **Restart HIPS** backend
+2. **Restart CHIPS** backend
 3. **Trigger the event** that matches the rule
 4. **Verify the alert** in the dashboard
 
@@ -572,7 +572,7 @@ chmod +x test_files.py
 #!/bin/bash
 
 echo "============================================"
-echo "HIPS Complete Test Suite"
+echo "CHIPS Complete Test Suite"
 echo "============================================"
 echo ""
 
@@ -875,4 +875,5 @@ frequency:
 4. **Share rules** with your team
 5. **Monitor regularly** and tune as needed
 
-Happy detecting! 🛡️
+Happy detecting! ðŸ›¡ï¸
+

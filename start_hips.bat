@@ -1,8 +1,8 @@
 @echo off
-title HIPS - Host Intrusion Prevention System
+title CHIPS - Host Intrusion Prevention System
 
 echo ============================================
-echo   HIPS - Starting Backend Service
+echo   CHIPS - Starting Backend Service
 echo ============================================
 echo.
 
@@ -37,9 +37,9 @@ echo Checking dependencies...
 pip install -r requirements.txt --quiet
 
 echo.
-echo Starting HIPS backend on http://localhost:8000
-echo Keep this window open while using HIPS.
-echo Close this window to stop HIPS.
+echo Starting CHIPS backend on http://localhost:8000
+echo Keep this window open while using CHIPS.
+echo Close this window to stop CHIPS.
 echo.
 
 python -m hips_service.main

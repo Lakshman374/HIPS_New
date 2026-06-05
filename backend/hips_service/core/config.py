@@ -1,4 +1,4 @@
-"""Configuration management for HIPS."""
+"""Configuration management for CHIPS."""
 
 import logging
 import os
@@ -60,7 +60,7 @@ class APIConfig(BaseModel):
 
 
 class Config(BaseModel):
-    """Main HIPS configuration."""
+    """Main CHIPS configuration."""
     process_monitoring: ProcessMonitoringConfig = Field(default_factory=ProcessMonitoringConfig)
     file_monitoring: FileMonitoringConfig = Field(default_factory=FileMonitoringConfig)
     network_monitoring: NetworkMonitoringConfig = Field(default_factory=NetworkMonitoringConfig)
@@ -115,7 +115,7 @@ def get_config() -> Config:
     """
     global _config
     if _config is None:
-        config_path = os.getenv('HIPS_CONFIG', './config/hips_config.yaml')
+        config_path = os.getenv('CHIPS_CONFIG', './config/hips_config.yaml')
         _config = Config.load_from_file(config_path)
     return _config
 

@@ -24,7 +24,7 @@ from hips_service.api.app import create_app
 from hips_service.api.routes import rules, system, websocket
 
 # Configure logging
-_log_level = getattr(logging, os.getenv('HIPS_LOG_LEVEL', 'INFO').upper(), logging.INFO)
+_log_level = getattr(logging, os.getenv('CHIPS_LOG_LEVEL', 'INFO').upper(), logging.INFO)
 logging.basicConfig(
     level=_log_level,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',

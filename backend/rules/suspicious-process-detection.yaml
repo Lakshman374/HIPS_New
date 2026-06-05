@@ -27,7 +27,7 @@ rule:
     message: 'Suspicious process detected: {process_name}'
   - type: log
   metadata:
-    author: HIPS System
+    author: CHIPS System
     created: '2025-01-15'
     references:
     - https://attack.mitre.org/techniques/T1059/

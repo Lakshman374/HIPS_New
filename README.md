@@ -1,10 +1,10 @@
-# CHIPS - Host Intrusion Prevention System
+﻿# CHIPS - Host Intrusion Prevention System
 
 A comprehensive, cross-platform security monitoring and intrusion prevention system designed for FSKTM Data Centre with real-time threat detection, rule-based event matching, and a modern web-based dashboard.
 
 ---
 
-## 📋 Table of Contents
+## ðŸ“‹ Table of Contents
 
 - [Overview](#overview)
 - [Architecture](#architecture)
@@ -41,56 +41,56 @@ CHIPS (Intrusion Prevention System) is a real-time security monitoring solution 
 CHIPS follows a **client-server architecture** with a Python FastAPI backend and React frontend:
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                     CHIPS System Architecture                 │
-├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │             Frontend (React + TypeScript)            │  │
-│  │  - Dashboard, Alerts, Logs, Rules, Monitoring, etc.  │  │
-│  │  - Real-time updates via WebSocket                   │  │
-│  │  - Built with Vite, TailwindCSS, Recharts           │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                           ↕ (HTTP/WebSocket)                │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │          Backend (Python FastAPI + Uvicorn)         │  │
-│  │                                                       │  │
-│  │  ┌─────────────────────────────────────────────┐   │  │
-│  │  │           API Layer (FastAPI)               │   │  │
-│  │  │  - /api/v1/alerts, /api/v1/logs, /ws/*     │   │  │
-│  │  └─────────────────────────────────────────────┘   │  │
-│  │                     ↑                               │  │
-│  │  ┌─────────────────────────────────────────────┐   │  │
-│  │  │  Rule Engine & Event Processing             │   │  │
-│  │  │  - Loads YAML rules                         │   │  │
-│  │  │  - Matches events against conditions        │   │  │
-│  │  │  - Triggers alerts and actions              │   │  │
-│  │  └─────────────────────────────────────────────┘   │  │
-│  │                     ↑                               │  │
-│  │  ┌─────────────────────────────────────────────┐   │  │
-│  │  │           Monitoring Layer                  │   │  │
-│  │  │  - ProcessMonitor (psutil)                 │   │  │
-│  │  │  - FilesystemMonitor (watchdog)             │   │  │
-│  │  │  - RegistryMonitor (Windows)                │   │  │
-│  │  │  - NetworkMonitor                           │   │  │
-│  │  └─────────────────────────────────────────────┘   │  │
-│  │                     ↑                               │  │
-│  │  ┌─────────────────────────────────────────────┐   │  │
-│  │  │  Event Bus & Activity Logger                │   │  │
-│  │  │  - Central pub/sub for events               │   │  │
-│  │  │  - Persists events to database              │   │  │
-│  │  └─────────────────────────────────────────────┘   │  │
-│  │                                                      │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                           ↓                                  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │         SQLite Database (hips_data.db)              │  │
-│  │  - alerts table                                      │  │
-│  │  - activity_logs table                              │  │
-│  │  - blocked_actions table                            │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                               │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                     CHIPS System Architecture                 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚                                                               â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚             Frontend (React + TypeScript)            â”‚  â”‚
+â”‚  â”‚  - Dashboard, Alerts, Logs, Rules, Monitoring, etc.  â”‚  â”‚
+â”‚  â”‚  - Real-time updates via WebSocket                   â”‚  â”‚
+â”‚  â”‚  - Built with Vite, TailwindCSS, Recharts           â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚                           â†• (HTTP/WebSocket)                â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚          Backend (Python FastAPI + Uvicorn)         â”‚  â”‚
+â”‚  â”‚                                                       â”‚  â”‚
+â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚  â”‚
+â”‚  â”‚  â”‚           API Layer (FastAPI)               â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - /api/v1/alerts, /api/v1/logs, /ws/*     â”‚   â”‚  â”‚
+â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚  â”‚
+â”‚  â”‚                     â†‘                               â”‚  â”‚
+â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚  â”‚
+â”‚  â”‚  â”‚  Rule Engine & Event Processing             â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - Loads YAML rules                         â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - Matches events against conditions        â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - Triggers alerts and actions              â”‚   â”‚  â”‚
+â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚  â”‚
+â”‚  â”‚                     â†‘                               â”‚  â”‚
+â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚  â”‚
+â”‚  â”‚  â”‚           Monitoring Layer                  â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - ProcessMonitor (psutil)                 â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - FilesystemMonitor (watchdog)             â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - RegistryMonitor (Windows)                â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - NetworkMonitor                           â”‚   â”‚  â”‚
+â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚  â”‚
+â”‚  â”‚                     â†‘                               â”‚  â”‚
+â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚  â”‚
+â”‚  â”‚  â”‚  Event Bus & Activity Logger                â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - Central pub/sub for events               â”‚   â”‚  â”‚
+â”‚  â”‚  â”‚  - Persists events to database              â”‚   â”‚  â”‚
+â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚  â”‚
+â”‚  â”‚                                                      â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚                           â†“                                  â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚         SQLite Database (hips_data.db)              â”‚  â”‚
+â”‚  â”‚  - alerts table                                      â”‚  â”‚
+â”‚  â”‚  - activity_logs table                              â”‚  â”‚
+â”‚  â”‚  - blocked_actions table                            â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚                                                               â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
@@ -128,55 +128,55 @@ CHIPS follows a **client-server architecture** with a Python FastAPI backend and
 ## Features
 
 ### Core Monitoring
-- ✅ **Process Monitoring** - Detects process creation, termination, and privilege escalation
-- ✅ **Filesystem Monitoring** - Tracks file creation, modification, deletion, and rapid changes (ransomware detection)
-- ✅ **Registry Monitoring** - Windows registry key and value changes
-- ✅ **Network Monitoring** - Outbound/inbound connections on suspicious ports
+- âœ… **Process Monitoring** - Detects process creation, termination, and privilege escalation
+- âœ… **Filesystem Monitoring** - Tracks file creation, modification, deletion, and rapid changes (ransomware detection)
+- âœ… **Registry Monitoring** - Windows registry key and value changes
+- âœ… **Network Monitoring** - Outbound/inbound connections on suspicious ports
 
 ### Detection & Prevention
-- ✅ **YAML Rule Engine** - 25+ pre-configured detection rules
-- ✅ **Pattern Matching** - Regular expressions, string matching, numeric comparisons
-- ✅ **Frequency-based Detection** - Identifies rapid events (ransomware, brute force)
-- ✅ **Process Blocking** - Terminates malicious processes
-- ✅ **Action Framework** - Alert, block, log, notify via webhooks
+- âœ… **YAML Rule Engine** - 25+ pre-configured detection rules
+- âœ… **Pattern Matching** - Regular expressions, string matching, numeric comparisons
+- âœ… **Frequency-based Detection** - Identifies rapid events (ransomware, brute force)
+- âœ… **Process Blocking** - Terminates malicious processes
+- âœ… **Action Framework** - Alert, block, log, notify via webhooks
 
 ### Alert Management
-- ✅ **Severity Levels** - Low, Medium, High, Critical
-- ✅ **Alert Status** - New, Acknowledged, Resolved
-- ✅ **Rate Limiting** - Configurable alerts per hour per rule
-- ✅ **Retention Policies** - Auto-cleanup of old alerts (configurable days)
+- âœ… **Severity Levels** - Low, Medium, High, Critical
+- âœ… **Alert Status** - New, Acknowledged, Resolved
+- âœ… **Rate Limiting** - Configurable alerts per hour per rule
+- âœ… **Retention Policies** - Auto-cleanup of old alerts (configurable days)
 
 ### Dashboard & Visualization
-- ✅ **Real-time Dashboard** - Live event metrics, event type distribution
-- ✅ **Alerts Page** - View, filter, acknowledge, resolve, delete alerts
-- ✅ **Logs Page** - Complete activity history with advanced filtering
-- ✅ **Rules Management** - Create, edit, disable, download, upload rules
-- ✅ **Monitoring Status** - Active monitors and capabilities
-- ✅ **Reports** - Generate PDF reports of security activities
-- ✅ **Settings** - Configure monitoring intervals, watched paths, excluded processes
+- âœ… **Real-time Dashboard** - Live event metrics, event type distribution
+- âœ… **Alerts Page** - View, filter, acknowledge, resolve, delete alerts
+- âœ… **Logs Page** - Complete activity history with advanced filtering
+- âœ… **Rules Management** - Create, edit, disable, download, upload rules
+- âœ… **Monitoring Status** - Active monitors and capabilities
+- âœ… **Reports** - Generate PDF reports of security activities
+- âœ… **Settings** - Configure monitoring intervals, watched paths, excluded processes
 
 ### Rules Included
 Pre-configured rules detect:
-- 🚨 Ransomware (rapid file changes, suspicious extensions)
-- 🚨 Cryptocurrency miners
-- 🚨 Lateral movement attempts
-- 🚨 Windows Defender disabling
-- 🚨 UAC bypass techniques
-- 🚨 Registry persistence (AppInit DLL, Run keys, Winlogon)
-- 🚨 LSA modification attempts
-- 🚨 Credential dumping
-- 🚨 LOLBAS abuse
-- 🚨 PowerShell exploitation
-- 🚨 Shadow copy deletion
-- 🚨 Event log clearing
-- 🚨 Firewall disabling
-- 🚨 Scheduled task persistence
-- 🚨 Office spawning shell
-- 🚨 Netcat usage
-- 🚨 Reverse shell detection
-- 🚨 Port scanning
-- 🚨 Data exfiltration (curl/wget)
-- 🚨 Encoded PowerShell commands
+- ðŸš¨ Ransomware (rapid file changes, suspicious extensions)
+- ðŸš¨ Cryptocurrency miners
+- ðŸš¨ Lateral movement attempts
+- ðŸš¨ Windows Defender disabling
+- ðŸš¨ UAC bypass techniques
+- ðŸš¨ Registry persistence (AppInit DLL, Run keys, Winlogon)
+- ðŸš¨ LSA modification attempts
+- ðŸš¨ Credential dumping
+- ðŸš¨ LOLBAS abuse
+- ðŸš¨ PowerShell exploitation
+- ðŸš¨ Shadow copy deletion
+- ðŸš¨ Event log clearing
+- ðŸš¨ Firewall disabling
+- ðŸš¨ Scheduled task persistence
+- ðŸš¨ Office spawning shell
+- ðŸš¨ Netcat usage
+- ðŸš¨ Reverse shell detection
+- ðŸš¨ Port scanning
+- ðŸš¨ Data exfiltration (curl/wget)
+- ðŸš¨ Encoded PowerShell commands
 
 ---
 
@@ -207,8 +207,8 @@ Pre-configured rules detect:
 
    Expected output:
    ```
-   ✓ All components started successfully
-   ✓ API server starting on 0.0.0.0:8000
+   âœ“ All components started successfully
+   âœ“ API server starting on 0.0.0.0:8000
    ```
 
 ### Frontend Setup
@@ -230,7 +230,7 @@ Pre-configured rules detect:
 
    Expected output:
    ```
-   ➜  Local:   http://localhost:5173/
+   âžœ  Local:   http://localhost:5173/
    ```
 
 4. **Build for production:**
@@ -259,7 +259,7 @@ Open http://localhost:5173
 
 ## Configuration
 
-### Main Configuration File: `config/hips_config.yaml`
+### Main Configuration File: `config/CHIPS_CONFIG.yaml`
 
 ```yaml
 api:
@@ -353,9 +353,9 @@ Settings that can be modified through the UI:
 
 ### Environment Variables
 
-- `HIPS_CONFIG` - Path to configuration file (default: `./config/hips_config.yaml`)
-- `HIPS_LOG_LEVEL` - Logging level (DEBUG, INFO, WARNING, ERROR)
-- `HIPS_CORS_ORIGINS` - Comma-separated CORS origins for production
+- `CHIPS_CONFIG` - Path to configuration file (default: `./config/CHIPS_CONFIG.yaml`)
+- `CHIPS_LOG_LEVEL` - Logging level (DEBUG, INFO, WARNING, ERROR)
+- `CHIPS_CORS_ORIGINS` - Comma-separated CORS origins for production
 
 ---
 
@@ -735,112 +735,112 @@ CREATE TABLE blocked_actions (
 ## Project Structure
 
 ```
-HIPS/
-├── README.md                          # This file
-├── QUICK_START.md                     # Quick start guide
-├── USER_GUIDE.md                      # User guide
-├── hips_settings.json                 # Runtime settings
-│
-├── backend/                           # Python FastAPI backend
-│   ├── requirements.txt               # Python dependencies
-│   ├── hips_service/
-│   │   ├── __init__.py
-│   │   ├── main.py                    # Entry point
-│   │   ├── api/
-│   │   │   ├── app.py                 # FastAPI app factory
-│   │   │   └── routes/
-│   │   │       ├── alerts.py
-│   │   │       ├── logs.py
-│   │   │       ├── rules.py
-│   │   │       ├── metrics.py
-│   │   │       ├── system.py
-│   │   │       ├── websocket.py
-│   │   │       ├── monitoring.py
-│   │   │       ├── settings.py
-│   │   │       ├── reports.py
-│   │   │       └── __init__.py
-│   │   ├── core/
-│   │   │   ├── config.py              # Configuration management
-│   │   │   ├── event_bus.py           # Event pub/sub
-│   │   │   ├── activity_logger.py     # Event logging to DB
-│   │   │   ├── platform_detector.py   # OS detection
-│   │   │   └── __init__.py
-│   │   ├── database/
-│   │   │   ├── models.py              # SQLAlchemy models
-│   │   │   └── __init__.py
-│   │   ├── monitors/
-│   │   │   ├── base_monitor.py        # Abstract base class
-│   │   │   ├── process_monitor.py     # Process monitoring
-│   │   │   ├── filesystem_monitor.py  # Filesystem monitoring
-│   │   │   ├── registry_monitor.py    # Windows registry monitoring
-│   │   │   ├── platform/
-│   │   │   └── __init__.py
-│   │   ├── rules/
-│   │   │   ├── engine.py              # Rule matching engine
-│   │   │   ├── parser.py              # YAML parser
-│   │   │   ├── matcher.py             # Pattern matching logic
-│   │   │   ├── schema.py              # Rule data models
-│   │   │   └── __init__.py
-│   │   ├── service/
-│   │   │   └── __init__.py
-│   │   ├── utils/
-│   │   │   ├── time.py                # Timezone utilities
-│   │   │   └── __init__.py
-│   │   └── assets/
-│   ├── config/
-│   │   └── hips_config.yaml           # Main configuration
-│   └── rules/                         # YAML detection rules
-│       ├── ransomware-rapid-file-changes.yaml
-│       ├── windows-defender-disable.yaml
-│       ├── crypto-miner-detection.yaml
-│       ├── registry-appinit-dll.yaml
-│       └── ... (25+ rules)
-│
-├── frontend/                          # React + TypeScript frontend
-│   ├── package.json                   # Node dependencies
-│   ├── tsconfig.json                  # TypeScript config
-│   ├── vite.config.ts                 # Vite configuration
-│   ├── tailwind.config.js             # TailwindCSS config
-│   ├── index.html                     # HTML entry point
-│   ├── src/
-│   │   ├── main.tsx                   # React entry point
-│   │   ├── App.tsx                    # Main app component
-│   │   ├── pages/
-│   │   │   ├── Dashboard.tsx
-│   │   │   ├── Alerts.tsx
-│   │   │   ├── Logs.tsx
-│   │   │   ├── Rules.tsx
-│   │   │   ├── Monitoring.tsx
-│   │   │   ├── Reports.tsx
-│   │   │   └── Settings.tsx
-│   │   ├── components/
-│   │   │   ├── layout/
-│   │   │   │   └── MainLayout.tsx
-│   │   │   └── ui/                    # Radix UI wrapper components
-│   │   │       ├── card.tsx
-│   │   │       ├── button.tsx
-│   │   │       ├── badge.tsx
-│   │   │       ├── dialog.tsx
-│   │   │       ├── table.tsx
-│   │   │       └── ... (more UI components)
-│   │   ├── services/
-│   │   │   ├── api.ts                 # Axios instance
-│   │   │   ├── alertsService.ts       # Alerts API calls
-│   │   │   ├── logsService.ts         # Logs API calls
-│   │   │   ├── rulesService.ts        # Rules API calls
-│   │   │   ├── dashboardService.ts    # Dashboard metrics
-│   │   │   ├── settingsService.ts     # Settings API calls
-│   │   │   └── websocketService.ts    # WebSocket connection
-│   │   ├── hooks/
-│   │   │   └── useDarkMode.ts         # Dark mode toggle
-│   │   ├── types/
-│   │   │   └── ... TypeScript interfaces
-│   │   ├── utils/
-│   │   │   └── ... Helper functions
-│   │   └── styles/
-│   │       ├── globals.css            # TailwindCSS imports
-│   │       └── ... (component styles)
-│   └── postcss.config.js              # PostCSS for TailwindCSS
+CHIPS/
+â”œâ”€â”€ README.md                          # This file
+â”œâ”€â”€ QUICK_START.md                     # Quick start guide
+â”œâ”€â”€ USER_GUIDE.md                      # User guide
+â”œâ”€â”€ hips_settings.json                 # Runtime settings
+â”‚
+â”œâ”€â”€ backend/                           # Python FastAPI backend
+â”‚   â”œâ”€â”€ requirements.txt               # Python dependencies
+â”‚   â”œâ”€â”€ hips_service/
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ main.py                    # Entry point
+â”‚   â”‚   â”œâ”€â”€ api/
+â”‚   â”‚   â”‚   â”œâ”€â”€ app.py                 # FastAPI app factory
+â”‚   â”‚   â”‚   â””â”€â”€ routes/
+â”‚   â”‚   â”‚       â”œâ”€â”€ alerts.py
+â”‚   â”‚   â”‚       â”œâ”€â”€ logs.py
+â”‚   â”‚   â”‚       â”œâ”€â”€ rules.py
+â”‚   â”‚   â”‚       â”œâ”€â”€ metrics.py
+â”‚   â”‚   â”‚       â”œâ”€â”€ system.py
+â”‚   â”‚   â”‚       â”œâ”€â”€ websocket.py
+â”‚   â”‚   â”‚       â”œâ”€â”€ monitoring.py
+â”‚   â”‚   â”‚       â”œâ”€â”€ settings.py
+â”‚   â”‚   â”‚       â”œâ”€â”€ reports.py
+â”‚   â”‚   â”‚       â””â”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ core/
+â”‚   â”‚   â”‚   â”œâ”€â”€ config.py              # Configuration management
+â”‚   â”‚   â”‚   â”œâ”€â”€ event_bus.py           # Event pub/sub
+â”‚   â”‚   â”‚   â”œâ”€â”€ activity_logger.py     # Event logging to DB
+â”‚   â”‚   â”‚   â”œâ”€â”€ platform_detector.py   # OS detection
+â”‚   â”‚   â”‚   â””â”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ database/
+â”‚   â”‚   â”‚   â”œâ”€â”€ models.py              # SQLAlchemy models
+â”‚   â”‚   â”‚   â””â”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ monitors/
+â”‚   â”‚   â”‚   â”œâ”€â”€ base_monitor.py        # Abstract base class
+â”‚   â”‚   â”‚   â”œâ”€â”€ process_monitor.py     # Process monitoring
+â”‚   â”‚   â”‚   â”œâ”€â”€ filesystem_monitor.py  # Filesystem monitoring
+â”‚   â”‚   â”‚   â”œâ”€â”€ registry_monitor.py    # Windows registry monitoring
+â”‚   â”‚   â”‚   â”œâ”€â”€ platform/
+â”‚   â”‚   â”‚   â””â”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ rules/
+â”‚   â”‚   â”‚   â”œâ”€â”€ engine.py              # Rule matching engine
+â”‚   â”‚   â”‚   â”œâ”€â”€ parser.py              # YAML parser
+â”‚   â”‚   â”‚   â”œâ”€â”€ matcher.py             # Pattern matching logic
+â”‚   â”‚   â”‚   â”œâ”€â”€ schema.py              # Rule data models
+â”‚   â”‚   â”‚   â””â”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ service/
+â”‚   â”‚   â”‚   â””â”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ utils/
+â”‚   â”‚   â”‚   â”œâ”€â”€ time.py                # Timezone utilities
+â”‚   â”‚   â”‚   â””â”€â”€ __init__.py
+â”‚   â”‚   â””â”€â”€ assets/
+â”‚   â”œâ”€â”€ config/
+â”‚   â”‚   â””â”€â”€ CHIPS_CONFIG.yaml           # Main configuration
+â”‚   â””â”€â”€ rules/                         # YAML detection rules
+â”‚       â”œâ”€â”€ ransomware-rapid-file-changes.yaml
+â”‚       â”œâ”€â”€ windows-defender-disable.yaml
+â”‚       â”œâ”€â”€ crypto-miner-detection.yaml
+â”‚       â”œâ”€â”€ registry-appinit-dll.yaml
+â”‚       â””â”€â”€ ... (25+ rules)
+â”‚
+â”œâ”€â”€ frontend/                          # React + TypeScript frontend
+â”‚   â”œâ”€â”€ package.json                   # Node dependencies
+â”‚   â”œâ”€â”€ tsconfig.json                  # TypeScript config
+â”‚   â”œâ”€â”€ vite.config.ts                 # Vite configuration
+â”‚   â”œâ”€â”€ tailwind.config.js             # TailwindCSS config
+â”‚   â”œâ”€â”€ index.html                     # HTML entry point
+â”‚   â”œâ”€â”€ src/
+â”‚   â”‚   â”œâ”€â”€ main.tsx                   # React entry point
+â”‚   â”‚   â”œâ”€â”€ App.tsx                    # Main app component
+â”‚   â”‚   â”œâ”€â”€ pages/
+â”‚   â”‚   â”‚   â”œâ”€â”€ Dashboard.tsx
+â”‚   â”‚   â”‚   â”œâ”€â”€ Alerts.tsx
+â”‚   â”‚   â”‚   â”œâ”€â”€ Logs.tsx
+â”‚   â”‚   â”‚   â”œâ”€â”€ Rules.tsx
+â”‚   â”‚   â”‚   â”œâ”€â”€ Monitoring.tsx
+â”‚   â”‚   â”‚   â”œâ”€â”€ Reports.tsx
+â”‚   â”‚   â”‚   â””â”€â”€ Settings.tsx
+â”‚   â”‚   â”œâ”€â”€ components/
+â”‚   â”‚   â”‚   â”œâ”€â”€ layout/
+â”‚   â”‚   â”‚   â”‚   â””â”€â”€ MainLayout.tsx
+â”‚   â”‚   â”‚   â””â”€â”€ ui/                    # Radix UI wrapper components
+â”‚   â”‚   â”‚       â”œâ”€â”€ card.tsx
+â”‚   â”‚   â”‚       â”œâ”€â”€ button.tsx
+â”‚   â”‚   â”‚       â”œâ”€â”€ badge.tsx
+â”‚   â”‚   â”‚       â”œâ”€â”€ dialog.tsx
+â”‚   â”‚   â”‚       â”œâ”€â”€ table.tsx
+â”‚   â”‚   â”‚       â””â”€â”€ ... (more UI components)
+â”‚   â”‚   â”œâ”€â”€ services/
+â”‚   â”‚   â”‚   â”œâ”€â”€ api.ts                 # Axios instance
+â”‚   â”‚   â”‚   â”œâ”€â”€ alertsService.ts       # Alerts API calls
+â”‚   â”‚   â”‚   â”œâ”€â”€ logsService.ts         # Logs API calls
+â”‚   â”‚   â”‚   â”œâ”€â”€ rulesService.ts        # Rules API calls
+â”‚   â”‚   â”‚   â”œâ”€â”€ dashboardService.ts    # Dashboard metrics
+â”‚   â”‚   â”‚   â”œâ”€â”€ settingsService.ts     # Settings API calls
+â”‚   â”‚   â”‚   â””â”€â”€ websocketService.ts    # WebSocket connection
+â”‚   â”‚   â”œâ”€â”€ hooks/
+â”‚   â”‚   â”‚   â””â”€â”€ useDarkMode.ts         # Dark mode toggle
+â”‚   â”‚   â”œâ”€â”€ types/
+â”‚   â”‚   â”‚   â””â”€â”€ ... TypeScript interfaces
+â”‚   â”‚   â”œâ”€â”€ utils/
+â”‚   â”‚   â”‚   â””â”€â”€ ... Helper functions
+â”‚   â”‚   â””â”€â”€ styles/
+â”‚   â”‚       â”œâ”€â”€ globals.css            # TailwindCSS imports
+â”‚   â”‚       â””â”€â”€ ... (component styles)
+â”‚   â””â”€â”€ postcss.config.js              # PostCSS for TailwindCSS
 ```
 
 ---
@@ -965,7 +965,7 @@ curl http://localhost:8000/api/v1/system/status
 tail -f backend/hips.log
 
 # Verify monitors are enabled in config
-grep enabled: config/hips_config.yaml
+grep enabled: config/CHIPS_CONFIG.yaml
 ```
 
 **WebSocket connection failing:**
@@ -1018,6 +1018,7 @@ FSKTM Data Centre Security Team
 
 For issues or questions:
 1. Check logs: `tail -f backend/hips.log`
-2. Review configuration: `config/hips_config.yaml`
+2. Review configuration: `config/CHIPS_CONFIG.yaml`
 3. Test rule matching with sample events
 4. Check database for error records
+

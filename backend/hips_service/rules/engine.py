@@ -353,7 +353,7 @@ class RuleEngine:
             req = urllib.request.Request(
                 webhook_url,
                 data=body,
-                headers={"Content-Type": "application/json", "User-Agent": "CHIPS-HIPS/1.0"},
+                headers={"Content-Type": "application/json", "User-Agent": "CHIPS/1.0"},
                 method="POST",
             )
             with urllib.request.urlopen(req, timeout=5) as resp:

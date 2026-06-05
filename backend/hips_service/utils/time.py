@@ -1,4 +1,4 @@
-"""Time utilities for HIPS."""
+"""Time utilities for CHIPS."""
 
 from datetime import datetime, timedelta, timezone
 

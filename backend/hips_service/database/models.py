@@ -1,4 +1,4 @@
-"""Database models for HIPS."""
+"""Database models for CHIPS."""
 
 from contextlib import contextmanager
 from datetime import datetime

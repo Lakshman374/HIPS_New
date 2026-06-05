@@ -1,0 +1,4 @@
+Double click the (start_hips.bat) file to run the backend then can click the link below to view website.
+
+https://hips-new.vercel.app/
+
