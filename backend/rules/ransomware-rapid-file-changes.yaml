@@ -1,0 +1,28 @@
+rule:
+  id: ransomware-rapid-file-changes
+  name: Ransomware Rapid File Modification Detection
+  description: Detects when a program modifies a large number of files in a very short
+    period of time, which is a strong sign of ransomware encrypting your data.
+  enabled: false
+  severity: critical
+  category: Ransomware
+  conditions:
+    event_type: file_modified
+    platform:
+    - linux
+    - windows
+    frequency:
+      count: 30
+      timeframe: 60s
+  actions:
+  - type: alert
+    priority: critical
+    message: RANSOMWARE DETECTED! Rapid file modifications detected - possible ransomware
+      activity
+  - type: log
+  - type: notify
+    message: Webhook test - Ransomware detected
+  metadata:
+    author: user
+    references: []
+    tags: []

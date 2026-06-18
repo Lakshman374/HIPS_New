@@ -1,0 +1,40 @@
+rule:
+  id: "registry-ifeo-debugger-hijack"
+  name: "Image File Execution Options Debugger Hijack"
+  description: "Detects when a malicious program is set to run in place of a legitimate Windows application such as Task Manager, so the attacker's code executes whenever that program is started."
+  enabled: true
+  severity: "high"
+  category: "Persistence"
+
+  conditions:
+    event_type: "registry_change"
+    platform:
+      - "windows"
+
+    all:
+      - field: "registry_key"
+        operator: "regex"
+        value: "(?i)HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options"
+
+    any:
+      - field: "registry_value"
+        operator: "equals"
+        value: "Debugger"
+
+      - field: "registry_operation"
+        operator: "equals"
+        value: "key_create"
+
+  actions:
+    - type: "alert"
+      priority: "high"
+      message: "IFEO hijack detected — Debugger entry in Image File Execution Options: {registry_key} = {registry_data}"
+
+    - type: "log"
+
+  metadata:
+    author: "CHIPS Security Team"
+    created: "2026-05-09"
+    tags: ["persistence", "ifeo", "debugger-hijack", "accessibility", "registry", "windows"]
+    references:
+      - "https://attack.mitre.org/techniques/T1546/012/"

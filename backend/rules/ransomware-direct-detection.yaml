@@ -1,0 +1,27 @@
+rule:
+  id: ransomware-direct-detection
+  name: Ransomware Built-in Detection
+  description: Detects ransomware activity reported directly by the file system monitor when it observes an unusually high number of file changes in a short period.
+  enabled: false
+  severity: critical
+  category: Ransomware
+  conditions:
+    event_type: ransomware_detected
+    platform:
+    - linux
+    - windows
+  actions:
+  - type: alert
+    priority: critical
+    message: 'RANSOMWARE DETECTED! {change_count} file modifications in {time_window_seconds}s
+      in directory: {directory}'
+  - type: log
+  metadata:
+    author: CHIPS Security Team
+    created: '2026-05-08'
+    references:
+    - https://attack.mitre.org/techniques/T1486/
+    tags:
+    - ransomware
+    - file-encryption
+    - critical

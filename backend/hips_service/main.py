@@ -19,6 +19,7 @@ from hips_service.database.models import init_db
 from hips_service.monitors.process_monitor import ProcessMonitor
 from hips_service.monitors.filesystem_monitor import FilesystemMonitor
 from hips_service.monitors.registry_monitor import RegistryMonitor
+from hips_service.monitors.network_monitor import NetworkMonitor
 from hips_service.rules.engine import RuleEngine
 from hips_service.api.app import create_app
 from hips_service.api.routes import rules, system, websocket
@@ -117,6 +118,17 @@ class CHIPSService:
                         logger.warning(f"Rejected invalid excluded extension from config: {ext!r}")
             self.monitors.append(filesystem_monitor)
             logger.info("Filesystem monitor initialized")
+
+        # Network monitor
+        if self.config.network_monitoring.enabled:
+            network_monitor = NetworkMonitor(
+                self.event_bus,
+                interval=self.config.network_monitoring.interval_seconds,
+                suspicious_ports=self.config.network_monitoring.suspicious_ports,
+                max_events_per_batch=self.config.network_monitoring.max_events_per_batch,
+            )
+            self.monitors.append(network_monitor)
+            logger.info("Network monitor initialized")
 
         # Registry monitor (Windows only)
         if self.config.registry_monitoring.enabled:

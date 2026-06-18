@@ -8814,3 +8814,79 @@
 2026-06-04 14:48:36,455 - hips_service.monitors.filesystem_monitor - CRITICAL - Ransomware detected in C:\Users\STRIX\AppData\Local\Google\Chrome\User Data\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb: 100 changes in 60s
 2026-06-04 14:48:43,421 - hips_service.monitors.filesystem_monitor - CRITICAL - Ransomware detected in C:\Users\STRIX\AppData\Local\Google\Chrome\User Data\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb: 100 changes in 60s
 2026-06-04 14:49:02,820 - hips_service.api.routes.websocket - INFO - WebSocket client disconnected. Total connections: 0
+2026-06-18 09:29:42,943 - hips_service.main - INFO - ============================================================
+2026-06-18 09:29:42,943 - hips_service.main - INFO - CHIPS - Intrusion Prevention System
+2026-06-18 09:29:42,943 - hips_service.main - INFO - ============================================================
+2026-06-18 09:29:42,943 - hips_service.main - INFO - Platform: windows
+2026-06-18 09:29:42,943 - hips_service.main - INFO - Initializing database...
+2026-06-18 09:29:42,959 - hips_service.main - INFO - Initializing rule engine...
+2026-06-18 09:29:42,959 - hips_service.main - INFO - Initializing activity logger...
+2026-06-18 09:29:42,959 - hips_service.main - INFO - Initializing monitors...
+2026-06-18 09:29:42,959 - hips_service.main - INFO - Process monitor initialized
+2026-06-18 09:29:42,959 - hips_service.main - WARNING - Rejected invalid excluded extension from config: '.db-journal'
+2026-06-18 09:29:42,959 - hips_service.main - WARNING - Rejected invalid excluded extension from config: '.db-shm'
+2026-06-18 09:29:42,959 - hips_service.main - WARNING - Rejected invalid excluded extension from config: '.db-wal'
+2026-06-18 09:29:42,959 - hips_service.main - INFO - Filesystem monitor initialized
+2026-06-18 09:29:42,959 - hips_service.main - INFO - Registry monitor initialized
+2026-06-18 09:29:42,959 - hips_service.core.event_bus - INFO - Subscriber added for event type: *
+2026-06-18 09:29:42,959 - hips_service.main - INFO - Starting CHIPS service...
+2026-06-18 09:29:42,959 - hips_service.core.activity_logger - INFO - Activity logger starting
+2026-06-18 09:29:42,959 - hips_service.core.event_bus - INFO - Subscriber added for event type: *
+2026-06-18 09:29:42,959 - hips_service.core.activity_logger - INFO - Activity logger started
+2026-06-18 09:29:42,959 - hips_service.rules.engine - INFO - Rule engine starting
+2026-06-18 09:29:42,959 - hips_service.rules.engine - INFO - Loading rules from rules
+2026-06-18 09:29:42,982 - hips_service.rules.parser - INFO - Loaded rule: suspicious-process-detection from rules\example-suspicious-process.yaml
+2026-06-18 09:29:43,016 - hips_service.rules.parser - INFO - Loaded rule: registry-lsa-modification from rules\registry-lsa-modification.yaml
+2026-06-18 09:29:43,046 - hips_service.rules.parser - INFO - Loaded rule: registry-new-service-install from rules\registry-new-service-install.yaml
+2026-06-18 09:29:43,066 - hips_service.rules.parser - INFO - Loaded rule: registry-run-key-persistence from rules\registry-run-key-persistence.yaml
+2026-06-18 09:29:43,084 - hips_service.rules.parser - INFO - Loaded rule: registry-winlogon-hijack from rules\registry-winlogon-hijack.yaml
+2026-06-18 09:29:43,094 - hips_service.rules.parser - INFO - Loaded rule: reverse-shell-detection from rules\reverse-shell-detection.yaml
+2026-06-18 09:29:43,104 - hips_service.rules.parser - INFO - Loaded rule: suspicious-file-extensions from rules\suspicious-file-extensions.yaml
+2026-06-18 09:29:43,109 - hips_service.rules.parser - INFO - Loaded rule: suspicious-process-detection from rules\suspicious-process-detection.yaml
+2026-06-18 09:29:43,117 - hips_service.rules.parser - INFO - Loaded rule: windows-credential-dumping from rules\windows-credential-dumping.yaml
+2026-06-18 09:29:43,133 - hips_service.rules.parser - INFO - Loaded rule: windows-defender-disable from rules\windows-defender-disable.yaml
+2026-06-18 09:29:43,145 - hips_service.rules.parser - INFO - Loaded rule: windows-event-log-clearing from rules\windows-event-log-clearing.yaml
+2026-06-18 09:29:43,173 - hips_service.rules.parser - INFO - Loaded rule: windows-firewall-disable from rules\windows-firewall-disable.yaml
+2026-06-18 09:29:43,189 - hips_service.rules.parser - INFO - Loaded rule: windows-lateral-movement from rules\windows-lateral-movement.yaml
+2026-06-18 09:29:43,198 - hips_service.rules.parser - INFO - Loaded rule: windows-lolbas-abuse from rules\windows-lolbas-abuse.yaml
+2026-06-18 09:29:43,210 - hips_service.rules.parser - INFO - Loaded rule: windows-office-spawning-shell from rules\windows-office-spawning-shell.yaml
+2026-06-18 09:29:43,226 - hips_service.rules.parser - INFO - Loaded rule: windows-powershell-download-cradle from rules\windows-powershell-download-cradle.yaml
+2026-06-18 09:29:43,232 - hips_service.rules.parser - INFO - Loaded rule: windows-scheduled-task-persistence from rules\windows-scheduled-task-persistence.yaml
+2026-06-18 09:29:43,248 - hips_service.rules.parser - INFO - Loaded rule: windows-shadow-copy-deletion from rules\windows-shadow-copy-deletion.yaml
+2026-06-18 09:29:43,255 - hips_service.rules.parser - INFO - Loaded rule: windows-uac-bypass from rules\windows-uac-bypass.yaml
+2026-06-18 09:29:43,255 - hips_service.rules.parser - INFO - Loaded 19 rules from rules
+2026-06-18 09:29:43,255 - hips_service.rules.engine - INFO - Loaded 18 rules
+2026-06-18 09:29:43,255 - hips_service.core.event_bus - INFO - Subscriber added for event type: *
+2026-06-18 09:29:43,255 - hips_service.rules.engine - INFO - Rule engine started
+2026-06-18 09:29:43,255 - hips_service.monitors.process_monitor - INFO - ProcessMonitor starting on windows
+2026-06-18 09:29:43,719 - hips_service.monitors.process_monitor - INFO - ProcessMonitor initialized with 308 processes
+2026-06-18 09:29:43,719 - hips_service.monitors.filesystem_monitor - INFO - FilesystemMonitor starting on windows
+2026-06-18 09:29:43,719 - hips_service.monitors.filesystem_monitor - INFO - Watching path: C:\Users
+2026-06-18 09:29:43,719 - hips_service.monitors.filesystem_monitor - INFO - Watching path: C:\Windows\System32
+2026-06-18 09:29:43,719 - hips_service.monitors.filesystem_monitor - INFO - Watching path: C:\Windows\SysWOW64
+2026-06-18 09:29:43,719 - hips_service.monitors.filesystem_monitor - INFO - Watching path: C:\Program Files
+2026-06-18 09:29:43,719 - hips_service.monitors.filesystem_monitor - INFO - Watching path: C:\Program Files (x86)
+2026-06-18 09:29:43,719 - hips_service.monitors.registry_monitor - INFO - RegistryMonitor starting on windows — watching 16 registry locations
+2026-06-18 09:29:43,719 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+2026-06-18 09:29:43,719 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce
+2026-06-18 09:29:43,719 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
+2026-06-18 09:29:43,719 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+2026-06-18 09:29:43,719 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce
+2026-06-18 09:29:43,719 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+2026-06-18 09:29:43,719 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options
+2026-06-18 09:29:43,735 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows
+2026-06-18 09:29:43,735 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SYSTEM\CurrentControlSet\Control\Lsa
+2026-06-18 09:29:43,735 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths
+2026-06-18 09:29:43,735 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Processes
+2026-06-18 09:29:43,735 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Extensions
+2026-06-18 09:29:43,738 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SYSTEM\CurrentControlSet\Services
+2026-06-18 09:29:43,738 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SYSTEM\CurrentControlSet\Control\Session Manager
+2026-06-18 09:29:43,738 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+2026-06-18 09:29:43,738 - hips_service.monitors.registry_monitor - INFO - Registry watcher started: HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy
+2026-06-18 09:29:43,748 - hips_service.monitors.process_monitor - INFO - ProcessMonitor excluded processes: {'Registry', 'System', 'smss.exe'}
+2026-06-18 09:29:43,748 - hips_service.rules.engine - INFO - Alert rate limit updated to 100/hour per rule
+2026-06-18 09:29:43,748 - hips_service.main - INFO - All components started successfully
+2026-06-18 09:29:43,748 - hips_service.main - INFO - API server starting on 0.0.0.0:8000
+2026-06-18 09:29:43,751 - hips_service.core.event_bus - INFO - Event bus processor started
+2026-06-18 09:29:49,057 - hips_service.api.routes.websocket - INFO - WebSocket client connected. Total connections: 1
+2026-06-18 09:29:51,156 - hips_service.monitors.registry_monitor - INFO - RegistryMonitor [LOW] subtree_change | key=HKLM\SYSTEM\CurrentControlSet\Services | value=None | data=None

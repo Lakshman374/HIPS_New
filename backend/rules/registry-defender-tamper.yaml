@@ -1,0 +1,35 @@
+rule:
+  id: "registry-defender-tamper"
+  name: "Windows Defender Tampering via Registry"
+  description: "Detects when Windows Defender settings are changed through the registry, which attackers do to prevent antivirus from scanning or detecting malicious files they plan to run."
+  enabled: true
+  severity: "critical"
+  category: "Evasion"
+
+  conditions:
+    event_type: "registry_change"
+    platform:
+      - "windows"
+
+    all:
+      - field: "registry_key"
+        operator: "regex"
+        value: "(?i)HKLM\\\\SOFTWARE\\\\(Policies\\\\)?Microsoft\\\\Windows Defender"
+
+      - field: "registry_operation"
+        operator: "in"
+        value: ["value_create", "value_modify", "key_create"]
+
+  actions:
+    - type: "alert"
+      priority: "critical"
+      message: "CRITICAL: Windows Defender tampered via registry — key: {registry_key}, value: {registry_value} = {registry_data}"
+
+    - type: "log"
+
+  metadata:
+    author: "CHIPS Security Team"
+    created: "2026-05-09"
+    tags: ["defense-evasion", "antivirus", "windows-defender", "registry", "windows"]
+    references:
+      - "https://attack.mitre.org/techniques/T1562/001/"
